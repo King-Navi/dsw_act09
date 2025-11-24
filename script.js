@@ -36,12 +36,17 @@ const toggleMenu = () => {
 };
 
 async function searchMealName() {
-  const search = document.getElementById('buscador').value;
-  await fetch(`https://www.themealdb.com/api/json/v1/1/search.php` + "?s=" + search)
+  const search = document.getElementById('buscador').value.trim();
+  const contenedor = document.querySelector('.articles');
+
+  if (!search) {
+    contenedor.innerHTML = '<p>Escribe algo para buscar.</p>';
+    return;
+  }
+
+  fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(search)}`)
     .then(respuesta => respuesta.json())
     .then(data => {
-      const contenedor = document.querySelector(`.${GRID_RESULT_CLASS}`);
-
       if (!data.meals) {
         contenedor.innerHTML = '<p>No se encontró nada.</p>';
         return;
@@ -51,17 +56,33 @@ async function searchMealName() {
     })
     .catch(error => {
       console.error('Error:', error);
+      contenedor.innerHTML = '<p>Ocurrió un error al buscar.</p>';
     });
 }
 
 function renderMeals(meals) {
-  const contenedor = document.querySelector(`.${GRID_RESULT_CLASS}`);
+  const contenedor = document.querySelector('.articles');
+
   contenedor.innerHTML = meals.map(meal => `
-    <article class="meal">
-      <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-      <h2>${meal.strMeal}</h2>
-      <p><strong>Categoría:</strong> ${meal.strCategory}</p>
-      <p><strong>Área:</strong> ${meal.strArea}</p>
+    <article>
+      <figure>
+        <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+      </figure>
+      <div class="article-preview">
+        <h2>${meal.strMeal}</h2>
+        <p>
+          ${truncate(meal.strInstructions, 200)}
+          <a href="${meal.strSource || '#'}" class="read-more" title="Leer más">
+            Leer más
+          </a>
+        </p>
+      </div>
     </article>
   `).join('');
+}
+
+function truncate(text, maxLength = 200) {
+  if (!text) return '';
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength).trim() + '...';
 }

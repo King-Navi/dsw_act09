@@ -247,6 +247,33 @@
 /*END Articles*/
 
 
+/**/
+.random-meal-section {
+  padding-top: 6rem;      /* para que no quede debajo del navbar fijo */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 6rem);
+}
+/**/
+
+/**/
+.calculator-section {
+  padding-top: 6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.calculator-section .articles {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
+  max-width: 75rem;
+  gap: 1.5rem;
+}
+/**/
+
 @media (min-width: 600px) {
     .menu-icon {
         display: none;

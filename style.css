@@ -11,14 +11,42 @@
     font-family: Poppins, sans-serif;
 }
 
+body {
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background:
+        radial-gradient(circle at top left,
+            rgba(244, 189, 80, 0.35),
+            /* var(--primary) con transparencia */
+            transparent 55%),
+        radial-gradient(circle at bottom right,
+            rgba(244, 189, 80, 0.35),
+            transparent 55%),
+        linear-gradient(135deg,
+            #4a0600,
+            var(--background));
+}
+
 .background {
     display: block;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     opacity: 1;
     z-index: 1;
     background-size: cover;
     background-repeat: no-repeat;
+    background:
+        radial-gradient(circle at top left,
+            rgba(244, 189, 80, 0.35),
+            /* var(--primary) con transparencia */
+            transparent 55%),
+        radial-gradient(circle at bottom right,
+            rgba(244, 189, 80, 0.35),
+            transparent 55%),
+        linear-gradient(135deg,
+            #4a0600,
+            var(--background));
 }
 
 .menu__wrapper {
@@ -168,6 +196,38 @@
 
 /*END Search section*/
 
+
+/**/
+.btn-random-meal {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.7rem 1.8rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: inherit;
+    background: #ff4b2b;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.22);
+    transition: transform 0.1s ease,
+        box-shadow 0.1s ease,
+        background 0.2s ease;
+}
+
+.btn-random-meal:hover {
+    background: #e23f23;
+    box-shadow: 0 3px 8px rgba(255, 75, 43, 0.4);
+    transform: translateY(-1px);
+}
+
+.btn-random-meal:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/**/
+
 /*Articles*/
 
 .articles {
@@ -177,6 +237,8 @@
     justify-content: center;
     max-width: 75rem;
     gap: 1.5rem;
+    margin: 6rem auto;
+    padding: 0 1rem;
 }
 
 .articles article {
@@ -192,9 +254,9 @@
 }
 
 .articles article:hover {
-  border-color: #ffee00;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
+    border-color: #ffee00;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
 }
 
 .articles article a {
@@ -249,29 +311,31 @@
 
 /**/
 .random-meal-section {
-  padding-top: 6rem;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: calc(100vh - 6rem);
+    padding-top: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 6rem);
 }
+
 /**/
 
 /**/
 .calculator-section {
-  padding-top: 6rem;
-  display: flex;
-  justify-content: center;
+    padding-top: 6rem;
+    display: flex;
+    justify-content: center;
 }
 
 .calculator-section .articles {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  justify-content: center;
-  max-width: 75rem;
-  gap: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+    max-width: 75rem;
+    gap: 1.5rem;
 }
+
 /**/
 
 @media (min-width: 600px) {
